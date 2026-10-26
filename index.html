@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Astrid Askert — Art director &amp; creative</title>
+<meta name="description" content="Astrid Askert, art director and creative based in Stockholm.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="home">
+
+<header class="hdr">
+<a class="brand tap" href="index.html"><span class="hl">Astrid Askert</span></a>
+<span class="hdr-mid">Art director &amp; creative</span>
+<nav aria-label="Main">
+<a class="tap" href="projects.html"><span class="hl">Selected projects</span></a>
+<span aria-hidden="true">/</span>
+<a class="tap" href="about.html"><span class="hl">About</span></a>
+</nav>
+</header>
+
+<main>
+<a class="slide" href="jlfw26.html">
+<div class="stage"><img class="landscape" style="aspect-ratio: 3 / 2" src="media/513501a0ccaab8884be03c5e1d0a5cbe.jpg" alt="FW26 Campaign — cover image"></div>
+<div class="caption"><span class="hl">FW26 Campaign <span class="muted">— J.LINDEBERG, 2026</span></span></div>
+</a>
+<a class="slide" href="naturemorte.html" hidden>
+<div class="stage"><img class="portrait" style="aspect-ratio: 3 / 4" src="media/a91fabf5e461809ca05fadea923d2969.webp" alt="Nature Morte — cover image"></div>
+<div class="caption"><span class="hl">Nature Morte <span class="muted">— Stora Skuggan, 2021</span></span></div>
+</a>
+<a class="slide" href="jlindeberg.html" hidden>
+<div class="stage"><img class="landscape" style="aspect-ratio: 11 / 7" src="media/74947850d8ecbe670330025c0a68cdc0.webp" alt="Lifestyle direction &amp; rebrand rollout — cover image"></div>
+<div class="caption"><span class="hl">Lifestyle direction &amp; rebrand rollout <span class="muted">— J.LINDEBERG, 2025</span></span></div>
+</a>
+<a class="slide" href="kottspelet.html" hidden>
+<div class="stage"><img class="portrait" style="aspect-ratio: 3 / 4" src="media/813c579e45074d6790553adbd3fd6438.jpg" alt="Köttspelet / The Meat Game — cover image"></div>
+<div class="caption"><span class="hl">Köttspelet / The Meat Game <span class="muted">— Svenskt Tenn, 2021</span></span></div>
+</a>
+<a class="slide" href="jlss26.html" hidden>
+<div class="stage"><img class="landscape" style="aspect-ratio: 3 / 2" src="media/0df32a01c7b3e42069a0df931609657a.jpg" alt="SS26 Brand Campaign — cover image"></div>
+<div class="caption"><span class="hl">SS26 Brand Campaign <span class="muted">— J.LINDEBERG, 2026</span></span></div>
+</a>
+<a class="slide" href="jlgolf.html" data-hold="5" hidden>
+<div class="stage"><video class="landscape" style="aspect-ratio: 3 / 2" src="media/59d0ee76b7b83bdb18c2606a7ae05246.mp4" muted loop playsinline preload="auto" aria-label="FW26 Golf Campaign — film"></video></div>
+<div class="caption"><span class="hl">FW26 Golf Campaign <span class="muted">— J.LINDEBERG, 2026</span></span></div>
+</a>
+<a class="slide" href="jlambassador.html" hidden>
+<div class="stage"><img class="portrait" style="aspect-ratio: 2 / 3" src="media/aa57b3f3ecf4fe2cfb4e3acfe04cd4a7.jpg" alt="Ambassador Campaign 2025 — cover image"></div>
+<div class="caption"><span class="hl">Ambassador Campaign 2025 <span class="muted">— J.LINDEBERG, 2025</span></span></div>
+</a>
+<a class="slide" href="jlfw25.html" data-hold="6" hidden>
+<div class="stage"><video class="landscape" style="aspect-ratio: 16 / 9" src="media/dde3bbfb994d7aead2142dc317e8c2af.mp4" muted loop playsinline preload="auto" aria-label="FW25 Campaign “Drive” — film"></video></div>
+<div class="caption"><span class="hl">FW25 Campaign “Drive” <span class="muted">— J.LINDEBERG, 2025</span></span></div>
+</a>
+</main>
+
+<footer>
+<span>e-mail: <a class="tap" href="mailto:astridaskert@live.se"><span class="hl">astridaskert@live.se</span></a></span>
+<span>phone: <a class="tap" href="tel:+46702558273"><span class="hl">+46 70 255 8273</span></a></span>
+<span>instagram: <a class="tap" href="https://instagram.com/astridaskert"><span class="hl">@astridaskert</span></a></span>
+</footer>
+
+</div>
+<script>
+// Cycle through the projects; each slide holds 1.5 s unless it sets data-hold (seconds).
+const slides = Array.from(document.querySelectorAll('.slide'));
+let current = 0, timer;
+function show(n) {
+  slides[current].hidden = true;
+  current = n;
+  const slide = slides[current];
+  slide.hidden = false;
+  const video = slide.querySelector('video');
+  if (video) { video.currentTime = 0; video.play().catch(() => {}); }
+  clearTimeout(timer);
+  timer = setTimeout(() => show((current + 1) % slides.length), (Number(slide.dataset.hold) || 1.5) * 1000);
+}
+document.addEventListener('visibilitychange', () => { if (!document.hidden) show(current); });
+show(0);
+</script>
+</body>
+</html>
